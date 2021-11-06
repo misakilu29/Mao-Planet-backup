@@ -102,7 +102,7 @@ function MyNavbar(props) {
             <Nav.Link href="#/" className="ACnavIcon">
               <BiHomeAlt />
             </Nav.Link>
-            <Nav.Link href="#/" className="ACnavIcon">
+            <Nav.Link to="/ShoppingCartII" className="ACnavIcon">
               <BiCartAlt />
             </Nav.Link>
           </Nav>
