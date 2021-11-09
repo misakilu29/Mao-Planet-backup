@@ -11,4 +11,3 @@ config
 .vscode
 public
 src\App.css
-src\App.js
