@@ -1,0 +1,94 @@
+#ACblogSection{
+  max-width: 100%;
+  background-color: #f5df4d;
+  justify-content: center;
+}
+
+#m-ACblogSection {
+  max-width: 100%;
+  background-color: #f5df4d;
+  justify-content: center;
+}
+
+.ACblogIntro {
+  background-color: #fff;
+}
+
+.ACblogIntro:hover {
+  text-decoration: none;
+}
+
+.ACblogIntroPic {
+  width: 150px;
+  height: 150px;
+}
+
+
+.ACblogIntroPic img {
+  width: 100%;
+}
+
+.m-ACblogIntroPic {
+  width: 260px;
+  height: 260px;
+  margin: auto;
+  justify-content: center;
+}
+
+.m-ACblogIntroPic img {
+  width: 100%;
+}
+
+.ACblogIntroText {
+  color: #000;
+}
+
+.ACblogIntroText p {
+  font-size: 0.9rem;
+  color: #646464;
+}
+
+.m-ACblogIntroText {
+  font-size: 1rem;
+  color: #646464;
+}
+
+#ACblogBtnSection {
+  background-color: #f5df4d;
+}
+
+#m-ACblogBtnSection {
+  background-color: #f5df4d;
+}
+
+.ACYellowOutlineBtn {
+  width: 200px;
+  border-radius: 20px;
+  border: 2px solid #f5df4d;
+  background-color: #fff;
+  color: #646464;
+  margin: 5px 0px 25px 0px;
+  text-align: center;
+}
+
+.ACYellowOutlineBtn:hover {
+  background-color: #f5df4d;
+  border-color: #fff;
+  color: white;
+}
+
+.m-ACYellowOutlineBtn {
+  width: 180px;
+  border-radius: 20px;
+  border: 2px solid #f5df4d;
+  background-color: #fff;
+  color: #646464;
+  // margin: 5px 0px 25px 0px;
+  text-align: center;
+}
+
+.m-ACYellowOutlineBtn:active {
+  background-color: #f5df4d;
+  border-color: #fff;
+  color: white;
+}

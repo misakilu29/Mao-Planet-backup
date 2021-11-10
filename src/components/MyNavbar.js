@@ -1,19 +1,21 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
-import { BiSearch, BiUser, BiHeart, BiHomeAlt, BiCartAlt } from 'react-icons/bi'
+import { BiSearch, BiUser, BiCartAlt, BiHeart } from 'react-icons/bi'
+import Avatar from './Avatar'
+// import ReadingProgress from '../components/ReadingProgress'
 import logo from '../images/logo.svg'
 import '../Styles/MyNavbar.scss'
+import { useStateValue } from '../StateProvider'
 
 // 要使用能有active css效果的NavLink元件
 import { NavLink } from 'react-router-dom'
 
 function MyNavbar(props) {
-  // const { auth } = props
+  const { auth } = props
+  const [{ basket }, dispatch] = useStateValue()
   return (
     <>
-      <div className="topYellow">
-        <p></p>
-      </div>
+      {/* <div className="ACtopYellow"></div> */}
 
       <Navbar
         collapseOnSelect
@@ -21,7 +23,7 @@ function MyNavbar(props) {
         bg="white"
         // variant="dark"
         fixed="top"
-        className="container-fluid navCSS px-md-5"
+        className="container-fluid ACnavCSS px-md-5"
       >
         <Navbar.Brand href="/home">
           <img
@@ -36,70 +38,110 @@ function MyNavbar(props) {
           <Nav className="mr-auto">
             {/* 利用as屬性來作選單link的整合 */}
             {/* 參考：https://react-bootstrap.github.io/components/navs/#nav-link-props */}
-            <Nav.Link as={NavLink} to="/adoptlist" className="navtext mr-md-3">
+            <Nav.Link
+              as={NavLink}
+              to="/adoptlist"
+              className="ACnavtext mr-md-3"
+            >
               毛孩找家
             </Nav.Link>
             <NavDropdown
               title="毛孩雜貨"
               id="collasible-nav-dropdown"
-              className="navtext mr-md-2"
+              className="ACnavtext mr-md-2"
             >
               <NavDropdown.Item
                 as={NavLink}
                 to="/productlist/dog"
-                className="navtext"
+                className="ACnavtext"
               >
                 狗狗館
               </NavDropdown.Item>
               <NavDropdown.Item
                 as={NavLink}
                 to="/productlist/cat"
-                className="navtext"
+                className="ACnavtext"
               >
                 貓貓館
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={NavLink} to="/hotellist" className="navtext mr-md-3">
+            <Nav.Link
+              as={NavLink}
+              to="/hotellist"
+              className="ACnavtext mr-md-3"
+            >
               毛孩假期
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/bloglist" className="navtext mr-md-3">
+            <Nav.Link as={NavLink} to="/bloglist" className="ACnavtext mr-md-3">
               鏟屎官大補帖
             </Nav.Link>
-            <Nav.Link
-              as={NavLink}
-              to="/login"
-              className="navtext d-flex d-block d-md-none"
-            >
-              會員登入
-            </Nav.Link>
-            <Nav.Link
-              as={NavLink}
-              to="/login"
-              className="navtext d-flex d-block d-md-none"
-            >
-              新用戶註冊
-            </Nav.Link>
+            {auth && (
+              <Nav.Link
+                as={NavLink}
+                to="/admin"
+                className="navtext d-flex d-block d-md-none"
+              >
+                會員專區
+              </Nav.Link>
+            )}
+            {!auth && (
+              <Nav.Link
+                as={NavLink}
+                to="/login"
+                className="navtext d-flex d-block d-md-none"
+              >
+                會員登入
+              </Nav.Link>
+            )}
+            {!auth && (
+              <Nav.Link
+                as={NavLink}
+                to="/signup"
+                className="navtext d-flex d-block d-md-none"
+              >
+                新用戶註冊
+              </Nav.Link>
+            )}
           </Nav>
 
           <Nav className="mb-4 d-flex d-none d-md-row-block px-md-2">
-            <Nav.Link href="#/" className="navicon">
+            <Nav.Link href="#/" className="ACnavIcon">
               <BiSearch />
             </Nav.Link>
-            <Nav.Link as={NavLink} to="/member" className="navicon">
-              <BiUser />
-            </Nav.Link>
-            <Nav.Link href="#/" className="navicon">
+            {!auth && (
+              <Nav.Link as={NavLink} to="/login" className="ACnavIcon">
+                <BiUser />
+              </Nav.Link>
+            )}
+            {auth && (
+              <Nav.Link as={NavLink} to="/admin" className="ACnavIcon">
+                <Avatar />
+              </Nav.Link>
+            )}
+            <Nav.Link
+              as={NavLink}
+              to="/shopping/secondstep"
+              className="ACnavIcon"
+            >
               <BiHeart />
             </Nav.Link>
-            <Nav.Link href="#/" className="navicon">
+            {/* <Nav.Link href="#/" className="ACnavIcon">
               <BiHomeAlt />
-            </Nav.Link>
-            <Nav.Link href="#/" className="navicon">
+            </Nav.Link> */}
+            <Nav.Link
+              as={NavLink}
+              to="/shopping/firststep"
+              className="ACnavIcon"
+            >
               <BiCartAlt />
+              <span className="CartCount">{basket?.length}</span>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
+      {/* <div>
+        <ReadingProgress />
+      </div> */}
     </>
   )
 }
