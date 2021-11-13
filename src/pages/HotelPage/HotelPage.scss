@@ -1,16 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Noto Sans CJK TC';
-  box-sizing: border-box;
-}
-.container {
-  width: 100%;
-}
 /* header */
 .MKHotelHeaderTitle {
   margin: 0 auto;
-  width: 70%;
+  width: 90%;
   letter-spacing: 5px;
   text-align: start;
 }
@@ -26,35 +17,24 @@
 
 /* hotel-avatar */
 
-.MKHotelRowAvatar {
+
+.MKHPCarousel {
   margin: 0 auto;
-  display: flex;
-  justify-content: space-evenly;
+  max-width: 800px;
 }
-.MKHotelAvatar {
-  width: 80%;
-  display: flex;
-  justify-content: space-evenly;
+.MKHPCarouselBox {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 800px;
 }
-.MKbigHotelAvatar {
-  width: 55%;
-  margin-left: 2rem;
-}
-.MKbigHotelAvatar > img {
+
+.MKHPCarouselimg {
+  margin: 0 auto;
   width: 100%;
+  height: 650px;
+  border-radius: 30px 30px 0 0;
   object-fit: fill;
-  border-radius: 30px;
-}
-.MKsmallHotelAvatar {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
-.MKsmallHotelAvatar > img {
-  width: 120px;
-  height: 120px;
-  border-radius: 30px;
-  object-fit: fill;
+  object-position: center center;
 }
 /* booking form */
 // .MKbooking {
@@ -183,16 +163,6 @@
   box-shadow: 1px 2px 10px rgba(94, 91, 91, 0.201);
 }
 /* map */
-.MKrow-map {
-  display: flex;
-  justify-content: center;
-  margin-top: 10rem;
-  margin-bottom: 10rem;
-}
-.MKrow-map > iframe {
-  width: 80%;
-  height: 25rem;
-}
 
 /* hotel comment */
 .MKHotelRowComment {
@@ -251,35 +221,36 @@
   object-fit: fill;
 }
 /* btn */
-
-#MKcard-btn {
+.MKHProwBtn {
+  display: flex;
+  justify-content: center;
+}
+.MKHPutton {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 172px;
+  height: 35px;
+  border: 2px solid #f5df4d;
+  border-radius: 90px;
+  text-align: center;
+  background-color: #fff;
+}
+.MKHPutton:hover {
+  background-color: #f5df4d;
+}
+.MKHPcard-btn {
   background-color: transparent;
-  width: 90%;
+  width: 100%;
   height: 30px;
   color: #646464;
   border: none;
   font-size: 1rem;
-  position: relative;
+  // position: relative;
 }
-#MKcard-btn:hover {
+.MKHPcard-btn:hover {
   color: #fff;
-}
-.MKcommBtnH {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 3rem;
-  display: flex;
-  justify-content: end;
-}
-.MKcomButton:hover {
-  background-color: #f5df4d;
-}
-.MKcomButton {
-  width: 200px;
-  height: 35px;
-  border: 1px solid #f5df4d;
-  border-radius: 90px;
-  text-align: center;
 }
 
 /* RWD */

@@ -1,18 +1,18 @@
 import React from 'react'
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { BiSearch, BiUser, BiCartAlt, BiHeart } from 'react-icons/bi'
+import { useStateValue } from '../StateProvider'
 import Avatar from './Avatar'
-// import ReadingProgress from '../components/ReadingProgress'
+// import ReadingProgress from './ReadingProgress'
 import logo from '../images/logo.svg'
 import '../Styles/MyNavbar.scss'
-import { useStateValue } from '../StateProvider'
 
 // 要使用能有active css效果的NavLink元件
 import { NavLink } from 'react-router-dom'
 
 function MyNavbar(props) {
   const { auth } = props
-  const [{ basket }, dispatch] = useStateValue()
+  const [{ basket, heart }, dispatch] = useStateValue()
   return (
     <>
       {/* <div className="ACtopYellow"></div> */}
@@ -118,12 +118,9 @@ function MyNavbar(props) {
                 <Avatar />
               </Nav.Link>
             )}
-            <Nav.Link
-              as={NavLink}
-              to="/shopping/secondstep"
-              className="ACnavIcon"
-            >
+            <Nav.Link href="#/" className="ACnavIcon">
               <BiHeart />
+              <span className="CartCount">{heart?.length}</span>
             </Nav.Link>
             {/* <Nav.Link href="#/" className="ACnavIcon">
               <BiHomeAlt />

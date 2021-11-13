@@ -10,29 +10,38 @@ import './Styles/global.scss'
 
 // 頁面用元件
 import Home from './pages/Home/Home'
-// ----------------Adopt---------------
-import AdoptList from './pages/AdoptList'
-// import ProductList from './pages/ProductList'
-// ----------------Product---------------
+import AdoptList from './pages/AdoptList/AdoptList'
+import AdoptPage from './pages/AdoptPage/AdoptPage'
 import ProductDog from './pages/ProductDog'
 import ProductCat from './pages/ProductCat'
+
 import ProductListCatFood from './components/ProductListCatFood'
 import ProductListCatToilet from './components/ProductListCatToilet'
 import ProductListCatHealth from './components/ProductListCatHealth'
 import ProductListCatOutdoor from './components/ProductListCatOutdoor'
-// ----------------Hotel---------------
-import HotelList from './pages/HotelList'
+import ProductDetailsCP19 from './components/ProductDetailsCP19'
+import ProductDetailsCP18 from './components/ProductDetailsCP18'
+import ProductDetails from './components/ProductDetails'
+
+import ProductDetailsPage from './components/ProductDetailsPage'
+import ProductListCatPlayPage2 from './components/ProductListCatPlayPage2'
+import ProductListDogFood from './components/ProductListDogFood'
+import ProductListDogToilet from './components/ProductListDogToilet'
+import ProductListDogHealth from './components/ProductListDogHealth'
+import ProductListDogOutdoor from './components/ProductListDogOutdoor'
+import HotelPage from './pages/HotelPage/HotelPage'
+import HotelList from './pages/HotelList/HotelList'
 import BlogList from './pages/BlogList/BlogList'
 import BlogArticle1 from './pages/BlogArticle/BlogArticle1'
-// ----------------Member---------------
 import SignUp from './pages/sign-up/SignUp'
 import Login from './pages/login/Login'
 import Member from './pages/member/Member'
 // import ReadingProgress from './components/ReadingProgress'
-import NotFoundPage from './pages/NotFoundPage'
-// ----------------Cart---------------
 import LuCartConfirmPage from './pages/ShoppingCart/LuCartConfirmPage'
 import LuCheckoutPage from './pages/ShoppingCart/LuCheckoutPage'
+import LuCartConfirmPageII from './pages/ShoppingCart/LuCartConfirmPageII'
+import LuCartDone from './pages/ShoppingCart/LuCartDone'
+import NotFoundPage from './pages/NotFoundPage'
 
 // 組合用元件
 import MyNavbar from './components/MyNavbar'
@@ -40,8 +49,10 @@ import MyFooter from './components/MyFooter'
 import AuthHeader from './components/AuthHeader'
 import MainContent from './components/MainContent'
 import ScrollToTop from './components/ScrollToTop'
+import ScrollButton from './components/ScrollButton'
 //import BreadCrumb from './components/BreadCrumb'
 import MultiLevelBreadCrumb from './components/MultiLevelBreadCrumb'
+// import ProductDetailsCP18 from './components/ProductDetailsCP18'
 
 function App(props) {
   const [auth, setAuth] = useState(false)
@@ -94,7 +105,21 @@ function App(props) {
               <Route path="/bloglist">
                 <BlogList />
               </Route>
-              <Route path="/productlist/dog">
+
+              <Route path="/productlist/dog/food" exact>
+                <ProductListDogFood />
+              </Route>
+              <Route path="/productlist/dog/toilet" exact>
+                <ProductListDogToilet />
+              </Route>
+              <Route path="/productlist/dog/health" exact>
+                <ProductListDogHealth />
+              </Route>
+              <Route path="/productlist/dog/outdoor" exact>
+                <ProductListDogOutdoor />
+              </Route>
+
+              <Route path="/productlist/dog" exact>
                 <ProductDog />
               </Route>
               <Route path="/productlist/cat/food" exact>
@@ -109,6 +134,17 @@ function App(props) {
               <Route path="/productlist/cat/outdoor" exact>
                 <ProductListCatOutdoor />
               </Route>
+
+              <Route path="/productlist/cat/cp-18" exact>
+                <ProductDetailsCP18 />
+              </Route>
+              <Route path="/productlist/cat/cp-19" exact>
+                <ProductDetailsCP19 />
+              </Route>
+
+              <Route path="/productlist/cat/play/2" exact>
+                <ProductListCatPlayPage2 />
+              </Route>
               <Route path="/productlist/cat/" exact>
                 <ProductCat />
               </Route>
@@ -118,14 +154,26 @@ function App(props) {
               <Route path="/shopping/secondstep" exact>
                 <LuCartConfirmPage />
               </Route>
+              <Route path="/shopping/finalstep" exact>
+                <LuCartConfirmPageII />
+              </Route>
+              <Route path="/shopping/donepage" exact>
+                <LuCartDone />
+              </Route>
               {/* <Route path="/productlist">
                 <ProductList />
               </Route> */}
-              <Route path="/hotellist">
-                <HotelList auth={auth} />
+              <Route path="/hotellist/hotelpage/:id?">
+                <HotelPage />
               </Route>
-              <Route path="/adoptlist">
-                <AdoptList auth={auth} />
+              <Route path="/hotellist">
+                <HotelList />
+              </Route>
+              <Route path="/adoptlist/adoptpage/:id?">
+                <AdoptPage />
+              </Route>
+              <Route path="/adoptlist/">
+                <AdoptList />
               </Route>
               <Route path="/home">
                 <Home auth={auth} />
@@ -174,6 +222,7 @@ function App(props) {
         </MainContent>
         {/* 頁尾+版權訊息 */}
         <MyFooter />
+        <ScrollButton />
       </>
     </Router>
   )

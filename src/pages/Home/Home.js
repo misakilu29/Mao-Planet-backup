@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Button } from 'react-bootstrap'
+import { Row, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { FaPaw } from 'react-icons/fa'
 import HomeCarousel from '../../components/HomeCarousel'
@@ -7,7 +7,6 @@ import PCHomeAdoptCard from '../../components/PCHomeAdoptCard'
 import MobileHomeAdoptCard from '../../components/MobileHomeAdoptCard'
 import HomeProductCardSection from '../../components/HomeProductCardSection'
 import HomeBlogSection from '../../components/HomeBlogSection'
-// import MyFooter from '../../components/MyFooter'
 
 import DogProductBN from '../../images/Home/DogProductBN_720x600.jpg'
 import CatProductBN from '../../images/Home/CatProductBN_720x600.jpg'
@@ -17,6 +16,8 @@ import NewArrCard3 from '../../images/Home/NewArrCard3_350x500.jpg'
 import AdoptBN from '../../images/Home/AdoptBN_450x600.png'
 import HotelBN1 from '../../images/Home/HotelBN1_450x600.png'
 import HotelBN2 from '../../images/Home/HotelBN2_450x600.png'
+
+import '../../Styles/ACButtons.scss'
 import './Home.scss'
 
 function Home(props) {
@@ -24,65 +25,92 @@ function Home(props) {
   return (
     <>
       <HomeCarousel />
-      {/* <h2>{auth ? '會員已登入' : '未登入'}</h2> */}
 
       {/* 毛孩找家 */}
-      <Container fluid id="adoptSection" className="p-0">
-        <Row>
-          <div className="ACadoptTitle d-md-block d-none">
-            <span>
-              Need <br />A Home.
-            </span>
-          </div>
+      <div id="adoptSection" className="p-0">
+        <div className="ACadoptTitle d-md-block d-none">
+          <span>
+            Need <br />A Home.
+          </span>
+        </div>
 
-          <div className="ACadoptBN col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto p-0">
-            <img src={AdoptBN} alt="" />
-          </div>
+        <div className="ACadoptBN col-12 d-flex justify-content-center align-items-center mx-auto">
+          <img src={AdoptBN} alt="" />
+        </div>
 
-          {/* PC */}
-          <div className="ACadoptText col-md-2 pr-4 d-md-block d-none">
-            <h2>毛孩找家</h2>
-            <p>
-              你的一眼瞬間，就讓我有了被愛的機會，你願意帶我走，給我們一個家嗎？
-            </p>
-          </div>
-          <div>
-            <Link to="/adoptlist">
-              <Button className="ACGrayOutlineBtn ACadoptBtn  my-3 d-md-block d-none">
-                <div>
-                  <FaPaw />
-                  &nbsp;&nbsp;&nbsp;帶我一起回家
-                </div>
-              </Button>
-            </Link>
-          </div>
+        {/* PC */}
+        <div className="ACadoptText col-md-2 pr-4 d-md-block d-none">
+          <h2>毛孩找家</h2>
+          <p>
+            你的一眼瞬間，就讓我有了被愛的機會，你願意帶我走，給我們一個家嗎？
+          </p>
+        </div>
+        <div>
+          <Link to="/adoptlist">
+            <Button className="ACGrayOutlineBtn ACadoptBtn my-3 d-md-block d-none">
+              <div>
+                <FaPaw />
+                &nbsp;&nbsp;&nbsp;帶我一起回家
+              </div>
+            </Button>
+          </Link>
+        </div>
 
-          {/* mobile */}
-          <div className="m-ACadoptText mx-auto col-9 d-block d-md-none p-0">
-            <h2>毛孩找家</h2>
-            <p>
-              你的一眼瞬間，就讓我有了被愛的機會，你願意帶我走，給我們一個家嗎？
-            </p>
-          </div>
-        </Row>
-      </Container>
+        {/* mobile */}
+        <div className="m-ACadoptText mx-auto col-10 d-block d-md-none p-0">
+          <h2>毛孩找家</h2>
+          <p>
+            你的一眼瞬間，就讓我有了被愛的機會，你願意帶我走，給我們一個家嗎？
+          </p>
+        </div>
+      </div>
 
       {/* 毛孩找家3張卡片 */}
-      <Container fluid id="ACadoptSection3Card" className="d-flex p-0 pt-5">
+      <div id="ACadoptSection3Card" className="d-flex">
         <PCHomeAdoptCard />
         <MobileHomeAdoptCard />
-      </Container>
+      </div>
 
-      {/* 毛孩雜貨 */}
-      <Container fluid id="ACproductSection" className="d-flex p-0">
-        <Row>
-          <div className="ACdogProductBN col-md-6 d-md-block d-none">
-            <img src={DogProductBN} alt="" />
-          </div>
-          {/* PC */}
+      {/* PC:毛孩雜貨 */}
+      <div id="ACproductSection" className="d-flex p-0">
+        <div className="ACdogProductBN col-md-6 d-md-block d-none pl-0">
+          <img src={DogProductBN} alt="" />
+        </div>
+        <div>
+          <Link to="/productlist/dog">
+            <Button className="ACGrayOutlineBtn ACdogBtn d-md-block d-none">
+              <div>
+                <FaPaw />
+                &nbsp;&nbsp;&nbsp;逛狗狗雜貨館
+              </div>
+            </Button>
+          </Link>
+        </div>
+        <div className="ACcatProductBN col-md-6 d-md-block d-none pr-0">
+          <img src={CatProductBN} alt="" />
+        </div>
+        <div>
+          <Link to="/productlist/cat">
+            <Button
+              variant="outline-primary"
+              className="ACYellowOutlineBtn ACcatBtn d-md-block d-none"
+            >
+              <div>
+                <FaPaw />
+                &nbsp;&nbsp;&nbsp;逛貓貓雜貨館
+              </div>
+            </Button>
+          </Link>
+        </div>
+      </div>
+
+      {/* mobile:毛孩雜貨 */}
+      <div>
+        <div className="m-ACdogProductBN col-12 d-md-none d-block p-0">
+          <img src={DogProductBN} alt="" />
           <div>
             <Link to="/productlist/dog">
-              <Button className="ACGrayOutlineBtn ACdogBtn d-md-block d-none">
+              <Button className="m-ACGrayOutlineBtn m-ACdogBtn d-md-none d-block">
                 <div>
                   <FaPaw />
                   &nbsp;&nbsp;&nbsp;逛狗狗雜貨館
@@ -90,61 +118,28 @@ function Home(props) {
               </Button>
             </Link>
           </div>
-          {/* mobile */}
-          <div className="m-ACdogProductBN col-12 d-md-none d-block">
-            <img src={DogProductBN} alt="" />
-          </div>
-          <div>
-            <Link to="/productlist/dog">
-              <Button className="m-ACGrayOutlineBtn m-ACdogBtn  d-md-none d-block">
-                <div>
-                  <FaPaw />
-                  &nbsp;&nbsp;&nbsp;逛狗狗雜貨館
-                </div>
-              </Button>
-            </Link>
-          </div>
+        </div>
+      </div>
+      <div className="m-ACcatProductBN col-12 d-md-none d-block p-0">
+        <img src={CatProductBN} alt="" />
+        <div>
+          <Link to="/productlist/cat">
+            <Button
+              variant="outline-primary"
+              className="m-ACYellowOutlineBtn m-ACcatBtn d-md-none d-block"
+            >
+              <div>
+                <FaPaw />
+                &nbsp;&nbsp;&nbsp;逛貓貓雜貨館
+              </div>
+            </Button>
+          </Link>
+        </div>
+      </div>
 
-          {/* PC */}
-          <div className="ACcatProductBN col-md-6 d-md-block d-none">
-            <img src={CatProductBN} alt="" />
-          </div>
-          <div>
-            <Link to="/productlist/cat">
-              <Button
-                variant="outline-primary"
-                className="ACYellowOutlineBtn ACcatBtn d-md-block d-none"
-              >
-                <div>
-                  <FaPaw />
-                  &nbsp;&nbsp;&nbsp;逛貓貓雜貨館
-                </div>
-              </Button>
-            </Link>
-          </div>
-          {/* mobile */}
-          <div className="m-ACcatProductBN col-12 d-md-none d-block">
-            <img src={CatProductBN} alt="" />
-          </div>
-          <div>
-            <Link to="/productlist/cat">
-              <Button
-                variant="outline-primary"
-                className="m-ACYellowOutlineBtn m-ACcatBtn d-md-none d-block"
-              >
-                <div>
-                  <FaPaw />
-                  &nbsp;&nbsp;&nbsp;逛貓貓雜貨館
-                </div>
-              </Button>
-            </Link>
-          </div>
-        </Row>
-      </Container>
-
-      <Container id="ACproductSection3Card" className="p-0 d-md-block d-none">
-        <Row>
-          <div className="ACnewArrCard col-md-4 col-12 mt-5 mx-auto">
+      <div id="ACproductSection3Card" className="p-0 d-md-block d-none">
+        <Row className="d-flex justify-content-center">
+          <div className="ACnewArrCard mt-5 mx-md-3">
             <Link to="/productlist/cat">
               <img src={NewArrCard1} alt="" />
               <div className="ACtag">
@@ -156,7 +151,7 @@ function Home(props) {
               </div>
             </Link>
           </div>
-          <div className="ACnewArrCard col-md-4 col-12 mt-5 mx-auto">
+          <div className="ACnewArrCard mt-5 mx-md-3">
             <Link to="/productlist/cat">
               <img src={NewArrCard2} alt="" />
               <div className="ACtag">
@@ -168,7 +163,7 @@ function Home(props) {
               </div>
             </Link>
           </div>
-          <div className="ACnewArrCard col-md-4 col-12 mt-5 mx-auto">
+          <div className="ACnewArrCard mt-5 mx-md-3">
             <Link to="/productlist/dog">
               <img src={NewArrCard3} alt="" />
               <div className="ACtag">
@@ -181,14 +176,14 @@ function Home(props) {
             </Link>
           </div>
         </Row>
-      </Container>
+      </div>
 
       {/* 毛孩雜貨商品卡片 */}
       <HomeProductCardSection />
 
       {/* 毛孩旅宿 */}
       {/* PC */}
-      <Container fluid id="AChotelSection" className="p-0">
+      <div id="AChotelSection" className="p-0">
         <Row>
           <div className="AChotelBN col-md-5 d-md-block d-none">
             <img src={HotelBN1} alt="" />
@@ -219,8 +214,8 @@ function Home(props) {
             </p>
           </div>
         </Row>
-      </Container>
-      <Container fluid id="ACsalonSection" className="p-0">
+      </div>
+      <div id="ACsalonSection" className="p-0">
         {/* PC */}
         <Row>
           <div className="ACsalonBN col-md-5 d-md-block d-none">
@@ -251,7 +246,7 @@ function Home(props) {
             </p>
           </div>
         </Row>
-      </Container>
+      </div>
       <div className="AChotelBtn d-flex justify-content-center p-0">
         <Link to="/hotellist">
           <Button className="ACYellowOutlineBtn">
@@ -264,7 +259,6 @@ function Home(props) {
       </div>
 
       <HomeBlogSection />
-      {/* <MyFooter /> */}
     </>
   )
 }
